@@ -1,11 +1,13 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, Image, Button,
+  StyleSheet, Text, View, Image,
 } from 'react-native';
 import { Constants } from 'expo';
 
 // const data = require('./data');
 import data from './data';
+import Homescreen from './src/components/HomeScreen';
+import Workscreen from './src/components/WorkScreen';
 
 const styles = StyleSheet.create({
   appContainer: {
@@ -51,14 +53,16 @@ const pic = {
   uri: data[0].avatar,
 };
 
-const home = {
+/*
+  const home = {
   buttonText: 'Show work info',
   address: data[0].home.address,
   email: data[0].home.email,
   phone_number: data[0].home.phone_number,
-};
+}; */
 
-const work = {
+/*
+  const work = {
   buttonText: 'Show home info',
   address: data[0].work.address,
   email: data[0].work.address,
@@ -66,7 +70,7 @@ const work = {
   company: data[0].work.company,
   department: data[0].work.department,
   job_title: data[0].work.job_title,
-};
+}; */
 
 export default class App extends React.Component {
   render() {
@@ -82,9 +86,8 @@ export default class App extends React.Component {
           </Text>
           <Text style={styles.text}>{name.lastname}</Text>
         </View>
-        <View style={styles.infoContainer}>
-          <Text style={styles.items}>Test</Text>
-        </View>
+        <Homescreen />
+        <Workscreen />
       </View>
     );
   }
