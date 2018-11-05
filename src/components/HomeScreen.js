@@ -1,32 +1,25 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
-
-import data from "../../data";
-
-const home = {
-  buttonText: "Show work info",
-  address: data[0].home.address,
-  email: data[0].home.email,
-  phone_number: data[0].home.phone_number
-};
+import React from 'react';
+import { View, Text } from 'react-native';
 
 export default class Homescreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = false;
-  }
-
   render() {
+    const { homeInfo } = this.props;
     return (
-      <View>
-        <View>
-          <Text>{home.address}</Text>
+      <View style={{ alignItems: 'center' }}>
+        <View
+          style={{
+            borderBottomWidth: 2,
+            borderColor: 'black',
+            alignSelf: 'stretch',
+          }}
+        >
+          <Text>{homeInfo.address}</Text>
         </View>
         <View>
-          <Text>{home.email}</Text>
+          <Text>{homeInfo.email}</Text>
         </View>
         <View>
-          <Text>{home.phone_number}</Text>
+          <Text>{homeInfo.phone_number}</Text>
         </View>
       </View>
     );
