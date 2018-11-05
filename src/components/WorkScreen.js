@@ -1,11 +1,30 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Animated } from 'react-native';
 
 export default class Workscreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.infoAnimation = new Animated.Value(0);
+  }
+
+  componentDidMount() {
+    Animated.timing(this.infoAnimation, { duration: 500, toValue: 1 }).start();
+  }
+
   render() {
     const { workInfo } = this.props;
     return (
-      <View>
+      <Animated.View
+        style={[
+          {
+            marginRight: this.infoAnimation.interpolate({
+              inputRange: [0, 1],
+              outputRange: [0, 'center'],
+            }),
+          },
+          { opacity: this.infoAnimation },
+        ]}
+      >
         <View>
           <Text>{workInfo.address}</Text>
         </View>
@@ -25,7 +44,7 @@ export default class Workscreen extends React.Component {
             {workInfo.job_title}
           </Text>
         </View>
-      </View>
+      </Animated.View>
     );
   }
 }
