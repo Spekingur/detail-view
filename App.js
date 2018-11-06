@@ -1,3 +1,7 @@
+// (c) 2018
+// Hreidar Olafur Arnarsson, hreidara14@ru.is
+// Maciej Sierzputowski, maciej15@ru.is
+
 import React from 'react';
 import {
   StyleSheet, Button, Text, View, Image,
@@ -11,12 +15,13 @@ import Workscreen from './src/components/WorkScreen';
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: '#f09',
+    // backgroundColor: '#f09',
     alignItems: 'center',
     marginTop: Constants.statusBarHeight,
+    padding: 30,
   },
   text: {
-    color: 'white',
+    // color: 'white',
     fontSize: 24,
   },
   avatarImg: {
@@ -24,6 +29,7 @@ const styles = StyleSheet.create({
     width: 200,
     borderWidth: 1,
     borderColor: 'black',
+    borderRadius: 10,
   },
   imgStyle: {
     marginTop: 20,
@@ -33,16 +39,16 @@ const styles = StyleSheet.create({
   nameSpace: {
     flexDirection: 'row',
   },
-  infoContainer: {
-    marginLeft: 20,
-    marginRight: 20,
+  screenContainer: {
+    flex: 1,
+    flexDirection: 'row',
   },
-  items: {
-    borderBottomWidth: 1,
-    borderColor: 'black',
+  buttonContainer: {
+    marginBottom: 20,
+    marginTop: 20,
   },
-  itemContainer: {
-    alignItems: 'center',
+  buttonStyle: {
+    borderRadius: 100,
   },
 });
 
@@ -81,14 +87,15 @@ export default class App extends React.Component {
           </Text>
         </View>
 
-        <View>
+        <View style={styles.buttonContainer}>
           <Button
+            style={styles.buttonStyle}
             title={onHomeScreen ? 'Show work info' : 'Show home info'}
             onPress={() => this.setState({ onHomeScreen: !onHomeScreen })}
           />
         </View>
 
-        <View>
+        <View style={styles.screenContainer}>
           {onHomeScreen ? (
             <Homescreen homeInfo={currentPerson.home} />
           ) : (
